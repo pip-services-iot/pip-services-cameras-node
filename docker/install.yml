@@ -1,0 +1,47 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  namespace: pip-positron
+  name: pip-services-cameras-node-deploy
+spec:
+  replicas: 1
+  minReadySeconds: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: pip-services-cameras-node
+    spec:
+      containers:
+      - name: pip-services-cameras-node-pod
+        image: registry.gitlab.com/pip-services/pip-services-cameras-node:latest
+        ports:
+        - containerPort: 8080
+          name: cameras
+        env:
+        - name: MONGO_ENABLED
+          valueFrom:
+            configMapKeyRef:
+              name: pip-positron-config
+              key: mongo_enabled
+        - name: MONGO_SERVICE_URI
+          valueFrom:
+            secretKeyRef:
+              name: pip-positron-secret
+              key: mongo_service_uri
+        - name: ELASTICSEARCH_LOGGING_ENABLED
+          valueFrom:
+            configMapKeyRef:
+              name: pip-positron-config
+              key: elasticsearch_logging_enabled
+        - name: PUSHGATEWAY_METRICS_ENABLED
+          valueFrom:
+            configMapKeyRef:
+              name: pip-positron-config
+              key: pushgateway_metrics_enabled
+      imagePullSecrets:
+      - name: gitlab-docker-registry

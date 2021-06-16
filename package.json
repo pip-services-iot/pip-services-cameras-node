@@ -1,0 +1,48 @@
+{
+  "name": "pip-services-cameras-node",
+  "version": "1.0.0",
+  "description": "Camera positioning microservice",
+  "main": "./obj/src/index.js",
+  "typings": "./obj/src/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "test": "mocha -t 5000 -R spec -u tdd --recursive ./obj/test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/pip-services-iot/pip-services-cameras-node.git"
+  },
+  "keywords": [
+    "pip-services",
+    "iot",
+    "cameras"
+  ],
+  "author": "Sergey Seroukhov <seroukhov@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://githib.com/pip-services-iot/pip-services-cameras-node/issues"
+  },
+  "homepage": "https://github.com/pip-services-iot/pip-services-cameras-node#README",
+  "dependencies": {
+    "aws-sdk": "^2.928.0",
+    "pip-services3-aws-nodex": "^1.0.0",
+    "pip-services3-commons-nodex": "^1.0.0",
+    "pip-services3-components-nodex": "^1.0.0",
+    "pip-services3-container-nodex": "^1.0.0",
+    "pip-services3-couchbase-nodex": "^1.0.0",
+    "pip-services3-data-nodex": "^1.0.0",
+    "pip-services3-grpc-nodex": "^1.0.0",
+    "pip-services3-mongodb-nodex": "^1.0.0",
+    "pip-services3-rpc-nodex": "^1.0.0",
+    "pip-services3-swagger-nodex": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.0.0",
+    "@types/mocha": "^8.0.0",
+    "@types/node": "*",
+    "chai": "^4.3.4",
+    "mocha": "^9.0.0",
+    "restify": "^4.3.0"
+  }
+}
