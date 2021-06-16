@@ -31,27 +31,21 @@ class CameraV1 implements IStringIdentifiable {
     public protocol?: string;
     public address: string;
     public label?: string;
-    public position?: any; // GeoJSON
+    public position?: any;    // GeoJSON
     public heading?: number; 
     public inclination?: number; 
-    public from_view?: any; // GeoJSON
-    public to_view?: any; // GeoJSON
+    public from_view?: any;   // GeoJSON
+    public to_view?: any;     // GeoJSON
     public analytics?: boolean;
 }
 
 interface ICamerasController {
     getCameras(correlationId: string, filter: FilterParams, paging: PagingParams): Promise<DataPage<CameraV1>>;
-
     getCameraById(correlationId: string, id: string): Promise<CameraV1>;
-    
     getCameraByAddress(correlationId: string, address: string): Promise<CameraV1>;            
-    
     findViewCameras(correlationId: string, orgId: string, position: any): Promise<CameraV1[]>;
-    
     createCamera(correlationId: string, item: CameraV1): Promise<CameraV1>;
-    
     updateCamera(correlationId: string, item: CameraV1): Promise<CameraV1>;
-    
     deleteCameraById(correlationId: string, id: string): Promise<CameraV1>;
 }
 
@@ -121,7 +115,7 @@ docker-compose -f ./docker/docker-compose.yml
 
 Install the client NPM package as
 ```bash
-npm install @NationalOilwellVarco/max-templates/client-idgenerator-node
+npm install pip-clients-cameras-node
 ```
 
 Inside your code get the reference to the client SDK
